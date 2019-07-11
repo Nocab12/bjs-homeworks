@@ -1,4 +1,4 @@
-
+'use strict'
 
 function calculateQuadraticEquation(){
     let a = +window.a.value;
@@ -11,22 +11,21 @@ function calculateQuadraticEquation(){
 }
 
 function getResult(a,b,c){
-    // код для задачи №1 писать здесь
-    //return x;
+    let x = [];
+    let D;
+    D = Math.pow(b,2) - 4*a*c;
+    if (D < 0) {
+        x = [];
+        alert("Корней нет!");
+    } else if (D == 0) {
+        x[0] = -b / (2*a);
+    } else {
+        x[0] = (-b+Math.sqrt(D))/(2*a);
+        x[1] = (-b-Math.sqrt(D))/(2*a);
+    }
+    return x;
 }
 
-function calculateDrinkTask(){
-    let name = window.personName.value;
-    let dateOfBirthday = new Date(window.dateOfBirthday.value);
-    let drink = askDrink(name, dateOfBirthday);
-    window.drink.textContent = drink;
-}
-
-function askDrink(name,dateOfBirthday){
-    // код для задачи №2 писать здесь
-    //console.log(result)
-    //return result;
-}
 
 function calculateAverageRating(){
     let marks = window.marks.value.split("").map(Number).filter((n)=> !isNaN(n) && n > 0);
@@ -34,7 +33,19 @@ function calculateAverageRating(){
     window.averageMark.textContent = averageMark;
 }
 
-function getAverageMark(marks){
-    // код для задачи №3 писать здесь
-    //return averageMark;
+
+
+function getAverageMark(marks) {
+    let result = 0;
+    if (marks.length > 5 ) {
+        alert('Количество оценок больше 5');
+        marks.splice(0,5);
+    }
+    for (let i = 0; i < marks.length; i++) {
+        result += marks[i];
+    }
+    result = result / marks.length;
+    console.log(result)
+    return result;
 }
+
