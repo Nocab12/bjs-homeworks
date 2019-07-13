@@ -39,7 +39,7 @@ function getAverageMark(marks) {
     let result = 0;
     if (marks.length > 5 ) {
         alert('Количество оценок больше 5');
-        marks.splice(0,5);
+        marks.splice(5);
     }
     for (let i = 0; i < marks.length; i++) {
         result += marks[i];
