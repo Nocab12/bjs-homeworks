@@ -10,9 +10,20 @@ function calculateMortgage() {
 }
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
-
     // код для задачи №1 писать здесь
-    //return totalAmount;
+    let md = function (date1, date2) {
+      let months;
+      months = (date2.getFullYear() - date1.getFullYear()) * 12;
+      months -= date1.getMonth();
+      months += date2.getMonth();
+      return months <= 0 ? 0 : months;
+    }
+    let P = percent / 1200;
+    let D = new Date();
+    let n = md( D, date );
+    let monthAmount = (amount - contribution) * (P + P / ((Math.pow((1 + P), n)) - 1 ));
+    let totalAmount = monthAmount * n;
+    return totalAmount.toFixed(2);
 }
 
 function sayHello() {
@@ -23,6 +34,8 @@ function sayHello() {
 }
 
 function getGreeting(name) {
-    // код для задачи №2 писать здесь
-    //return greeting;
+    if (name === '' || name === 'undefined' || name === 'null') {
+    	name = 'Аноним';
+    }
+    return (`Привет, мир! Меня зовут ${name}`);
 }
