@@ -1,8 +1,9 @@
+"use strict";
 function calculateMortgage() {
     let percent = window.percent.value;
     let contribution = window.contribution.value;
     let amount = window.amount.value;
-    let date = window.date.value;
+    let date = new Date(window.date.value); //Did not work without Date() creation
 
     let result = calculateTotalMortgage(percent, contribution, amount, date);
     let span = window.mortageResult;
